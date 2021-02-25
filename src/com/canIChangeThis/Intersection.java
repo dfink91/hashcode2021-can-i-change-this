@@ -18,7 +18,7 @@ public class Intersection {
         this.in.add(s);
     }
     public void addOutStreet(Street s) {
-        this.in.add(s);
+        this.out.add(s);
     }
 
 }

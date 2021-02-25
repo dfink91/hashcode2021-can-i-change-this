@@ -18,18 +18,17 @@ public class Worker {
         System.out.println(System.getProperty("user.dir"));
         ArrayList<String> files = new ArrayList<>();
         files.add("a");
-//        files.add("b");
-//        files.add("c");
-//        files.add("d");
-//        files.add("e");
-//        files.add("f");
+        files.add("b");
+        files.add("c");
+        files.add("d");
+        files.add("e");
+        files.add("f");
         int counter = 0;
         while (counter < files.size()) {
             String file = files.get(counter);
             if (file != null) {
                 try {
                     String fileContent = Files.readString(Path.of("in",  File.separator, file + ".txt"));
-                    System.out.println(fileContent);
                     String[] lines = fileContent.lines().toArray(String[]::new);
                     String[] resultLines = new String[0];
                     if (driver != null)

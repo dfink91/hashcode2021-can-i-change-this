@@ -16,11 +16,10 @@ public abstract class HashCodeDriver {
 
     public String[] run(String[] inputLines) {
         stofacaaazzze(inputLines);
-        runImpl();
-        return inputLines;
+        return runImpl();
     }
 
-    protected abstract void runImpl();
+    protected abstract String[] runImpl();
 
     public void stofacaaazzze(String[] inputLines) {
         int lineIdx = 0;
@@ -53,7 +52,6 @@ public abstract class HashCodeDriver {
                 i2 = new Intersection(end);
                 intersections.put(end, i2);
             i2.addInStreet(s);
-
         }
     }
 }
