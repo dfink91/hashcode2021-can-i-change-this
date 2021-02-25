@@ -36,7 +36,9 @@ public class Worker {
                         resultLines = driver.run(lines);
 
                     Path outPath = Path.of("output",  file + ".txt");
-                    Files.writeString(Files.createFile(outPath),
+                    if (Files.notExists(outPath))
+                        Files.createFile(outPath);
+                    Files.writeString(outPath,
                             Arrays.stream(resultLines).collect(Collectors.joining("\n")));
 
                 } catch (IOException e) {
