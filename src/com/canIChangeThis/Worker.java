@@ -10,29 +10,32 @@ import java.util.stream.Collectors;
 
 public class Worker {
 
-    HashCodeDriver driver;
+    public static class FileDriver {
+        String f;
+        HashCodeDriver d;
+        FileDriver(String f, HashCodeDriver d) {
+            this.f = f;
+            this.d = d;
+        }
+    }
+
+    ArrayList<FileDriver> fileDrivers;
 
     public void run() {
         System.out.println("worker runs");
 
         System.out.println(System.getProperty("user.dir"));
-        ArrayList<String> files = new ArrayList<>();
-        files.add("a");
-        files.add("b");
-        files.add("c");
-        files.add("d");
-        files.add("e");
-        files.add("f");
         int counter = 0;
-        while (counter < files.size()) {
-            String file = files.get(counter);
+        while (counter < fileDrivers.size()) {
+            FileDriver fd = fileDrivers.get(counter);
+            String file = fd.f;
             if (file != null) {
                 try {
                     String fileContent = Files.readString(Path.of("in",  File.separator, file + ".txt"));
                     String[] lines = fileContent.lines().toArray(String[]::new);
                     String[] resultLines = new String[0];
-                    if (driver != null)
-                        resultLines = driver.run(lines);
+                    if (fd.d != null)
+                        resultLines = fd.d.run(lines);
 
                     Path outPath = Path.of("output",  file + ".txt");
                     if (Files.notExists(outPath))

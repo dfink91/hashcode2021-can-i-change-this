@@ -13,6 +13,8 @@ public abstract class HashCodeDriver {
     public long qtyPoints;
     public HashMap<String, Street> streets;
     public HashMap<Long, Intersection> intersectionsMap;
+    public ArrayList<Car> cars;
+    long maxQtyStreetsPerCar;
 
     public String[] run(String[] inputLines) {
         stofacaaazzze(inputLines);
@@ -54,6 +56,7 @@ public abstract class HashCodeDriver {
             i2.addInStreet(s);
         }
         lineIdx += qtyStreets;
+        maxQtyStreetsPerCar = 0;
         for (int i = 0; i < qtyCars; i++) {
             String line = inputLines[lineIdx + i];
             String[] details = line.split(" ");
@@ -64,13 +67,14 @@ public abstract class HashCodeDriver {
                 s.count++;
                 c.streets.add(s);
             }
-            c.calcTotalTripTime();
-            for (int j = 1; j < details.length; j++) {
-                Street s = streets.get(details[j]);
-                c.streets.add(s);
-                if (c.totalTripTime < timeOfSimulation/2)
-                    s.countIfInTime =+ 1;
-            }
+            maxQtyStreetsPerCar = Math.max(maxQtyStreetsPerCar, c.streets.size());
+
+//            c.calcTotalTripTime();
+//            for (int j = 1; j < details.length; j++) {
+//                Street s = streets.get(details[j]);
+//                if (c.totalTripTime < timeOfSimulation/2)
+//                    s.countIfInTime =+ 1;
+//            }
         }
     }
 }
