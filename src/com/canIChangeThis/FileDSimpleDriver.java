@@ -1,10 +1,8 @@
 package com.canIChangeThis;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Comparator;
 
-public class FirstSimpleDriver extends HashCodeDriver {
+public class FileDSimpleDriver extends HashCodeDriver {
 
     @Override
     protected String[] runImpl() {
@@ -17,21 +15,10 @@ public class FirstSimpleDriver extends HashCodeDriver {
             ArrayList<String> tmpLight = new ArrayList<>();
             ArrayList<Street> sorted = (ArrayList<Street>)intersection.in.clone();
             sorted.sort((s1, s2) -> s2.count - s1.count); // Absteigend sortieren
-            int mittel = 0;
             for(int j = 0; j < sorted.size(); j++) {
                 Street s = sorted.get(j);
-                mittel += s.count;
-            }
-            mittel = (mittel / sorted.size()) + 1;
-
-            for(int j = 0; j < sorted.size(); j++) {
-                Street s = sorted.get(j);
-                if (s.count > 0) {
-                    int c = s.count / mittel;
-                    if (c == 0)
-                        c = 1;
-                    tmpLight.add(s.name + " " + c);
-                }
+                if (s.count > 0)
+                    tmpLight.add(s.name + " " + 1);
             }
             if (tmpLight.size() > 0) {
                 cntIntersections++;
@@ -45,5 +32,4 @@ public class FirstSimpleDriver extends HashCodeDriver {
 
         return outputLines.toArray(String[]::new);
     }
-
 }
