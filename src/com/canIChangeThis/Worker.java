@@ -17,12 +17,12 @@ public class Worker {
 
         System.out.println(System.getProperty("user.dir"));
         ArrayList<String> files = new ArrayList<>();
-        files.add("a_example");
-//        files.add("b_read_on");
-//        files.add("c_incunabula");
-//        files.add("d_tough_choices");
-//        files.add("e_so_many_books");
-//        files.add("f_libraries_of_the_world");
+        files.add("a");
+//        files.add("b");
+//        files.add("c");
+//        files.add("d");
+//        files.add("e");
+//        files.add("f");
         int counter = 0;
         while (counter < files.size()) {
             String file = files.get(counter);

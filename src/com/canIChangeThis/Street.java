@@ -3,11 +3,11 @@ package com.canIChangeThis;
 public class Street {
 
     public String name;
-    public int startIntersection;
-    public int endIntersection;
-    public int secondsToEnd_L;
+    public long startIntersection;
+    public long endIntersection;
+    public long secondsToEnd_L;
 
-    public Street(String name, int startIntersection, int endIntersection, int secondsToEnd) {
+    public Street(String name, long startIntersection, long endIntersection, long secondsToEnd) {
         this.name = name;
         this.startIntersection = startIntersection;
         this.endIntersection = endIntersection;
