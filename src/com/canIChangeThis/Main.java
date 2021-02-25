@@ -11,7 +11,7 @@ public class Main {
         fileDrivers.add(new Worker.FileDriver("a", new FirstSimpleDriver()));
         fileDrivers.add(new Worker.FileDriver("b", new FirstSimpleDriver()));
         fileDrivers.add(new Worker.FileDriver("c", new FirstSimpleDriver()));
-        fileDrivers.add(new Worker.FileDriver("d", new FileDDriver()));
+        fileDrivers.add(new Worker.FileDriver("d", new FirstSimpleDriver()));
         fileDrivers.add(new Worker.FileDriver("e", new FirstSimpleDriver()));
         fileDrivers.add(new Worker.FileDriver("f", new FirstSimpleDriver()));
         worker.fileDrivers = fileDrivers;

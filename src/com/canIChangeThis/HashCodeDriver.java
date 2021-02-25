@@ -35,6 +35,7 @@ public abstract class HashCodeDriver {
 
         streets = new HashMap<>();
         intersectionsMap = new HashMap<>();
+        cars = new ArrayList<>();
         for (int i = 0; i < qtyStreets; i++) {
             String line = inputLines[lineIdx + i];
             String[] details = line.split(" ");
@@ -67,6 +68,7 @@ public abstract class HashCodeDriver {
                 s.count++;
                 c.streets.add(s);
             }
+            cars.add(c);
             maxQtyStreetsPerCar = Math.max(maxQtyStreetsPerCar, c.streets.size());
 
 //            c.calcTotalTripTime();
