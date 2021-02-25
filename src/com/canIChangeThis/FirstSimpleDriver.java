@@ -14,7 +14,8 @@ public class FirstSimpleDriver extends HashCodeDriver {
             outputLines.add(intersection.id + "");
             outputLines.add(intersection.in.size() + "");
             for(int j = 0; j < intersection.in.size(); j++) {
-                outputLines.add(intersection.in.get(j).name + " 1");
+                Street s = intersection.in.get(j);
+                outputLines.add(s.name + " " + s.count);
             }
         }
         return outputLines.toArray(String[]::new);
