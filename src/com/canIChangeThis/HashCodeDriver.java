@@ -64,6 +64,13 @@ public abstract class HashCodeDriver {
                 s.count++;
                 c.streets.add(s);
             }
+            c.calcTotalTripTime();
+            for (int j = 1; j < details.length; j++) {
+                Street s = streets.get(details[j]);
+                c.streets.add(s);
+                if (c.totalTripTime < timeOfSimulation/2)
+                    s.countIfInTime =+ 1;
+            }
         }
     }
 }

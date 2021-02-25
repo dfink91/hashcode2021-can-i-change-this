@@ -15,7 +15,7 @@ public class FirstSimpleDriver extends HashCodeDriver {
             ArrayList<String> tmpLight = new ArrayList<>();
             for(int j = 0; j < intersection.in.size(); j++) {
                 Street s = intersection.in.get(j);
-                if (s.count > 0)
+                if (s.countIfInTime > 0)
                     tmpLight.add(s.name + " " + s.count);
             }
             if (tmpLight.size() > 0) {
