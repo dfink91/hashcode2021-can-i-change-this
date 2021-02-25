@@ -21,4 +21,6 @@ public class Intersection {
         this.out.add(s);
     }
 
+
+
 }
