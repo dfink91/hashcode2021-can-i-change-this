@@ -11,15 +11,17 @@ public class FirstSimpleDriver extends HashCodeDriver {
         outputLines.add(intersections.size() + "");
         for(int i = 0; i < intersections.size(); i++) {
             Intersection intersection = intersections.get(i);
-            outputLines.add(intersection.id + "");
             ArrayList<String> tmpLight = new ArrayList<>();
             for(int j = 0; j < intersection.in.size(); j++) {
                 Street s = intersection.in.get(j);
                 if (s.count > 0)
                     tmpLight.add(s.name + " " + s.count);
             }
-            outputLines.add(tmpLight.size() + "");
-            outputLines.addAll(tmpLight);
+            if (tmpLight.size() > 0) {
+                outputLines.add(intersection.id + "");
+                outputLines.add(tmpLight.size() + "");
+                outputLines.addAll(tmpLight);
+            }
         }
         return outputLines.toArray(String[]::new);
     }
