@@ -8,7 +8,8 @@ public class FirstSimpleDriver extends HashCodeDriver {
     protected String[] runImpl() {
         ArrayList<Intersection> intersections = new ArrayList<>(intersectionsMap.values());
         ArrayList<String> outputLines = new ArrayList<>();
-        outputLines.add(intersections.size() + "");
+        long cntIntersections = 0;
+        ArrayList<String> tmpLines = new ArrayList<>();
         for(int i = 0; i < intersections.size(); i++) {
             Intersection intersection = intersections.get(i);
             ArrayList<String> tmpLight = new ArrayList<>();
@@ -18,11 +19,15 @@ public class FirstSimpleDriver extends HashCodeDriver {
                     tmpLight.add(s.name + " " + s.count);
             }
             if (tmpLight.size() > 0) {
-                outputLines.add(intersection.id + "");
-                outputLines.add(tmpLight.size() + "");
-                outputLines.addAll(tmpLight);
+                cntIntersections++;
+                tmpLines.add(intersection.id + "");
+                tmpLines.add(tmpLight.size() + "");
+                tmpLines.addAll(tmpLight);
             }
         }
+        outputLines.add(cntIntersections + "");
+        outputLines.addAll(tmpLines);
+
         return outputLines.toArray(String[]::new);
     }
 
