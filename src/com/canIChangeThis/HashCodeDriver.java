@@ -12,7 +12,7 @@ public abstract class HashCodeDriver {
     public long qtyCars;
     public long qtyPoints;
     public ArrayList<Street> streets;
-    public HashMap<Long, Intersection> intersections;
+    public HashMap<Long, Intersection> intersectionsMap;
 
     public String[] run(String[] inputLines) {
         stofacaaazzze(inputLines);
@@ -32,7 +32,7 @@ public abstract class HashCodeDriver {
         qtyPoints = firstLineDetails[4];
 
         streets = new ArrayList<>();
-        intersections = new HashMap<>();
+        intersectionsMap = new HashMap<>();
         for (int i = 0; i < qtyStreets; i++) {
             String line = inputLines[lineIdx + i];
             String[] details = line.split(" ");
@@ -40,17 +40,17 @@ public abstract class HashCodeDriver {
             long end = Long.parseLong(details[1]);
             Street s = new Street(details[2], start, end, Long.parseLong(details[3]));
             streets.add(s);
-            Intersection i1 = intersections.get(start);
+            Intersection i1 = intersectionsMap.get(start);
             if (i1 == null) {
                 i1 = new Intersection(start);
-                intersections.put(start, i1);
+                intersectionsMap.put(start, i1);
             }
             i1.addOutStreet(s);
 
-            Intersection i2 = intersections.get(end);
+            Intersection i2 = intersectionsMap.get(end);
             if (i2 == null)
                 i2 = new Intersection(end);
-                intersections.put(end, i2);
+                intersectionsMap.put(end, i2);
             i2.addInStreet(s);
         }
     }
