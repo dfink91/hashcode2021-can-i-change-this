@@ -6,11 +6,13 @@ public class Street {
     public long startIntersection;
     public long endIntersection;
     public long secondsToEnd_L;
+    public int count;
 
     public Street(String name, long startIntersection, long endIntersection, long secondsToEnd) {
         this.name = name;
         this.startIntersection = startIntersection;
         this.endIntersection = endIntersection;
         this.secondsToEnd_L = secondsToEnd_L;
+        this.count = 0;
     }
 }

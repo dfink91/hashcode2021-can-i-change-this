@@ -11,7 +11,7 @@ public abstract class HashCodeDriver {
     public long qtyStreets;
     public long qtyCars;
     public long qtyPoints;
-    public ArrayList<Street> streets;
+    public HashMap<String, Street> streets;
     public HashMap<Long, Intersection> intersectionsMap;
 
     public String[] run(String[] inputLines) {
@@ -31,7 +31,7 @@ public abstract class HashCodeDriver {
         qtyCars = firstLineDetails[3];
         qtyPoints = firstLineDetails[4];
 
-        streets = new ArrayList<>();
+        streets = new HashMap<>();
         intersectionsMap = new HashMap<>();
         for (int i = 0; i < qtyStreets; i++) {
             String line = inputLines[lineIdx + i];
@@ -39,7 +39,7 @@ public abstract class HashCodeDriver {
             long start = Long.parseLong(details[0]);
             long end = Long.parseLong(details[1]);
             Street s = new Street(details[2], start, end, Long.parseLong(details[3]));
-            streets.add(s);
+            streets.put(s.name, s);
             Intersection i1 = intersectionsMap.get(start);
             if (i1 == null) {
                 i1 = new Intersection(start);
@@ -52,6 +52,18 @@ public abstract class HashCodeDriver {
                 i2 = new Intersection(end);
                 intersectionsMap.put(end, i2);
             i2.addInStreet(s);
+        }
+        lineIdx += qtyStreets;
+        for (int i = 0; i < qtyCars; i++) {
+            String line = inputLines[lineIdx + i];
+            String[] details = line.split(" ");
+            long start = Long.parseLong(details[0]);
+            Car c = new Car(start);
+            for (int j = 1; j < details.length; j++) {
+                Street s = streets.get(details[j]);
+                s.count++;
+                c.streets.add(s);
+            }
         }
     }
 }
